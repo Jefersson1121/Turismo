@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, sans-serif; /* Estilo de fuente para el cuerpo del documento */
+    margin: 0; /* Sin márgenes exteriores */
+    padding: 0; /* Sin relleno exterior */
+}
+
+/* Estilos del encabezado */
+header {
+    background: #808080; /* Fondo gris oscuro */
+    color: white; /* Texto blanco */
+    text-align: center; /* Alineación centrada del texto */
+    padding: 10px; /* Espaciado interior */
+    font-size: 1.2rem; /* Tamaño de fuente */
+    position: fixed; /* Posicionamiento fijo */
+    width: 100%; /* Ancho completo */
+    top: 0; /* En la parte superior */
+    left: 0; /* En el borde izquierdo */
+    z-index: 1000; /* Índice z para la superposición */
+}
+
+/* Contenedor principal */
+.container {
+    margin-top: 50px; /* Margen superior */
+    padding: 20px; /* Relleno interior */
+    transition: margin-left 0.3s ease; /* Transición suave de margen izquierdo */
+}
+
+/* Estilos del menú lateral */
+aside {
+    width: 250px; /* Ancho del menú lateral */
+    background: black; /* Fondo negro */
+    color: white; /* Texto blanco */
+    height: 100vh; /* Altura total de la ventana */
+    padding-top: 20px; /* Espaciado superior */
+    position: fixed; /* Posicionamiento fijo */
+    left: -250px; /* Oculto por defecto fuera de la pantalla */
+    transition: left 0.3s ease; /* Transición suave de posición izquierda */
+    z-index: 1100; /* Índice z para la superposición */
+}
+
+aside ul {
+    list-style: none; /* Lista sin viñetas */
+    padding: 0; /* Sin relleno interior */
+}
+
+aside ul li {
+    padding: 15px; /* Espaciado interior de los elementos de la lista */
+    text-align: center; /* Alineación centrada del texto */
+}
+
+aside ul li a {
+    color: white; /* Texto blanco */
+    text-decoration: none; /* Sin subrayado de enlaces */
+    display: block; /* Mostrar como bloque para ocupar el espacio completo */
+}
+
+/* Botón de apertura */
+.menu-btn {
+    position: fixed; /* Posicionamiento fijo */
+    top: 15px; /* 15 píxeles desde la parte superior */
+    left: 10px; /* 10 píxeles desde la izquierda */
+    font-size: 24px; /* Tamaño de fuente */
+    cursor: pointer; /* Cursor de puntero */
+    background: none; /* Fondo transparente */
+    border: none; /* Sin borde */
+    color: white; /* Texto blanco */
+    z-index: 1200; /* Índice z para la superposición */
+}
+
+/* Checkbox oculto para controlar el menú */
+#menu-toggle {
+    display: none; /* Ocultar el checkbox */
+}
+
+/* Cuando el checkbox está activado, el menú se despliega */
+#menu-toggle:checked ~ aside {
+    left: 0; /* Mostrar el menú desplazándolo a la posición izquierda */
+}
+
+/* Cuando el menú está abierto y se hace clic fuera de él, se oculta */
+#menu-toggle:checked ~ .overlay {
+    display: block; /* Mostrar la capa de fondo */
+}
+
+/* Capa de fondo cuando el menú está abierto */
+.overlay {
+    position: fixed; /* Posicionamiento fijo */
+    top: 0; /* En la parte superior */
+    left: 0; /* En el borde izquierdo */
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Altura completa */
+    background: rgba(0, 0, 0, 0.3); /* Fondo semi-transparente */
+    display: none; /* Ocultar inicialmente */
+    z-index: 1000; /* Índice z para la superposición */
+}
+
+/* Al hacer clic en el overlay, se cierra el menú */
+.overlay:has(#menu-toggle:checked) {
+    display: none; /* Ocultar el overlay cuando el menú está activo */
+}
